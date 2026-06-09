@@ -218,14 +218,19 @@ model PriceSnapshot {
   id            String             @id @default(cuid())
   symbol        String
   assetType     AssetType
-  provider      MarketDataProvider
+  provider      MarketDataProvider @default(FINNHUB)
   price         Decimal
   change        Decimal?
   changePercent Decimal?
-  currency      CurrencyCode
+  high          Decimal?
+  low           Decimal?
+  open          Decimal?
+  previousClose Decimal?
+  currency      CurrencyCode?
   capturedAt    DateTime           @default(now())
 
   @@index([symbol, assetType])
+  @@index([symbol, capturedAt])
   @@map("price_snapshots")
 }
 

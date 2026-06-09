@@ -12695,12 +12695,20 @@ export namespace Prisma {
     price: Decimal | null
     change: Decimal | null
     changePercent: Decimal | null
+    high: Decimal | null
+    low: Decimal | null
+    open: Decimal | null
+    previousClose: Decimal | null
   }
 
   export type PriceSnapshotSumAggregateOutputType = {
     price: Decimal | null
     change: Decimal | null
     changePercent: Decimal | null
+    high: Decimal | null
+    low: Decimal | null
+    open: Decimal | null
+    previousClose: Decimal | null
   }
 
   export type PriceSnapshotMinAggregateOutputType = {
@@ -12711,6 +12719,10 @@ export namespace Prisma {
     price: Decimal | null
     change: Decimal | null
     changePercent: Decimal | null
+    high: Decimal | null
+    low: Decimal | null
+    open: Decimal | null
+    previousClose: Decimal | null
     currency: $Enums.CurrencyCode | null
     capturedAt: Date | null
   }
@@ -12723,6 +12735,10 @@ export namespace Prisma {
     price: Decimal | null
     change: Decimal | null
     changePercent: Decimal | null
+    high: Decimal | null
+    low: Decimal | null
+    open: Decimal | null
+    previousClose: Decimal | null
     currency: $Enums.CurrencyCode | null
     capturedAt: Date | null
   }
@@ -12735,6 +12751,10 @@ export namespace Prisma {
     price: number
     change: number
     changePercent: number
+    high: number
+    low: number
+    open: number
+    previousClose: number
     currency: number
     capturedAt: number
     _all: number
@@ -12745,12 +12765,20 @@ export namespace Prisma {
     price?: true
     change?: true
     changePercent?: true
+    high?: true
+    low?: true
+    open?: true
+    previousClose?: true
   }
 
   export type PriceSnapshotSumAggregateInputType = {
     price?: true
     change?: true
     changePercent?: true
+    high?: true
+    low?: true
+    open?: true
+    previousClose?: true
   }
 
   export type PriceSnapshotMinAggregateInputType = {
@@ -12761,6 +12789,10 @@ export namespace Prisma {
     price?: true
     change?: true
     changePercent?: true
+    high?: true
+    low?: true
+    open?: true
+    previousClose?: true
     currency?: true
     capturedAt?: true
   }
@@ -12773,6 +12805,10 @@ export namespace Prisma {
     price?: true
     change?: true
     changePercent?: true
+    high?: true
+    low?: true
+    open?: true
+    previousClose?: true
     currency?: true
     capturedAt?: true
   }
@@ -12785,6 +12821,10 @@ export namespace Prisma {
     price?: true
     change?: true
     changePercent?: true
+    high?: true
+    low?: true
+    open?: true
+    previousClose?: true
     currency?: true
     capturedAt?: true
     _all?: true
@@ -12884,7 +12924,11 @@ export namespace Prisma {
     price: Decimal
     change: Decimal | null
     changePercent: Decimal | null
-    currency: $Enums.CurrencyCode
+    high: Decimal | null
+    low: Decimal | null
+    open: Decimal | null
+    previousClose: Decimal | null
+    currency: $Enums.CurrencyCode | null
     capturedAt: Date
     _count: PriceSnapshotCountAggregateOutputType | null
     _avg: PriceSnapshotAvgAggregateOutputType | null
@@ -12915,6 +12959,10 @@ export namespace Prisma {
     price?: boolean
     change?: boolean
     changePercent?: boolean
+    high?: boolean
+    low?: boolean
+    open?: boolean
+    previousClose?: boolean
     currency?: boolean
     capturedAt?: boolean
   }, ExtArgs["result"]["priceSnapshot"]>
@@ -12927,6 +12975,10 @@ export namespace Prisma {
     price?: boolean
     change?: boolean
     changePercent?: boolean
+    high?: boolean
+    low?: boolean
+    open?: boolean
+    previousClose?: boolean
     currency?: boolean
     capturedAt?: boolean
   }, ExtArgs["result"]["priceSnapshot"]>
@@ -12939,6 +12991,10 @@ export namespace Prisma {
     price?: boolean
     change?: boolean
     changePercent?: boolean
+    high?: boolean
+    low?: boolean
+    open?: boolean
+    previousClose?: boolean
     currency?: boolean
     capturedAt?: boolean
   }, ExtArgs["result"]["priceSnapshot"]>
@@ -12951,11 +13007,15 @@ export namespace Prisma {
     price?: boolean
     change?: boolean
     changePercent?: boolean
+    high?: boolean
+    low?: boolean
+    open?: boolean
+    previousClose?: boolean
     currency?: boolean
     capturedAt?: boolean
   }
 
-  export type PriceSnapshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "symbol" | "assetType" | "provider" | "price" | "change" | "changePercent" | "currency" | "capturedAt", ExtArgs["result"]["priceSnapshot"]>
+  export type PriceSnapshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "symbol" | "assetType" | "provider" | "price" | "change" | "changePercent" | "high" | "low" | "open" | "previousClose" | "currency" | "capturedAt", ExtArgs["result"]["priceSnapshot"]>
 
   export type $PriceSnapshotPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PriceSnapshot"
@@ -12968,7 +13028,11 @@ export namespace Prisma {
       price: Prisma.Decimal
       change: Prisma.Decimal | null
       changePercent: Prisma.Decimal | null
-      currency: $Enums.CurrencyCode
+      high: Prisma.Decimal | null
+      low: Prisma.Decimal | null
+      open: Prisma.Decimal | null
+      previousClose: Prisma.Decimal | null
+      currency: $Enums.CurrencyCode | null
       capturedAt: Date
     }, ExtArgs["result"]["priceSnapshot"]>
     composites: {}
@@ -13400,6 +13464,10 @@ export namespace Prisma {
     readonly price: FieldRef<"PriceSnapshot", 'Decimal'>
     readonly change: FieldRef<"PriceSnapshot", 'Decimal'>
     readonly changePercent: FieldRef<"PriceSnapshot", 'Decimal'>
+    readonly high: FieldRef<"PriceSnapshot", 'Decimal'>
+    readonly low: FieldRef<"PriceSnapshot", 'Decimal'>
+    readonly open: FieldRef<"PriceSnapshot", 'Decimal'>
+    readonly previousClose: FieldRef<"PriceSnapshot", 'Decimal'>
     readonly currency: FieldRef<"PriceSnapshot", 'CurrencyCode'>
     readonly capturedAt: FieldRef<"PriceSnapshot", 'DateTime'>
   }
@@ -16113,6 +16181,10 @@ export namespace Prisma {
     price: 'price',
     change: 'change',
     changePercent: 'changePercent',
+    high: 'high',
+    low: 'low',
+    open: 'open',
+    previousClose: 'previousClose',
     currency: 'currency',
     capturedAt: 'capturedAt'
   };
@@ -17090,7 +17162,11 @@ export namespace Prisma {
     price?: DecimalFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string
     change?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
     changePercent?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeFilter<"PriceSnapshot"> | $Enums.CurrencyCode
+    high?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    low?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    open?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    previousClose?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    currency?: EnumCurrencyCodeNullableFilter<"PriceSnapshot"> | $Enums.CurrencyCode | null
     capturedAt?: DateTimeFilter<"PriceSnapshot"> | Date | string
   }
 
@@ -17102,7 +17178,11 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrderInput | SortOrder
     changePercent?: SortOrderInput | SortOrder
-    currency?: SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    previousClose?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
     capturedAt?: SortOrder
   }
 
@@ -17117,7 +17197,11 @@ export namespace Prisma {
     price?: DecimalFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string
     change?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
     changePercent?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeFilter<"PriceSnapshot"> | $Enums.CurrencyCode
+    high?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    low?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    open?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    previousClose?: DecimalNullableFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    currency?: EnumCurrencyCodeNullableFilter<"PriceSnapshot"> | $Enums.CurrencyCode | null
     capturedAt?: DateTimeFilter<"PriceSnapshot"> | Date | string
   }, "id">
 
@@ -17129,7 +17213,11 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrderInput | SortOrder
     changePercent?: SortOrderInput | SortOrder
-    currency?: SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    previousClose?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
     capturedAt?: SortOrder
     _count?: PriceSnapshotCountOrderByAggregateInput
     _avg?: PriceSnapshotAvgOrderByAggregateInput
@@ -17149,7 +17237,11 @@ export namespace Prisma {
     price?: DecimalWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string
     change?: DecimalNullableWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
     changePercent?: DecimalNullableWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeWithAggregatesFilter<"PriceSnapshot"> | $Enums.CurrencyCode
+    high?: DecimalNullableWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    low?: DecimalNullableWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    open?: DecimalNullableWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    previousClose?: DecimalNullableWithAggregatesFilter<"PriceSnapshot"> | Decimal | DecimalJsLike | number | string | null
+    currency?: EnumCurrencyCodeNullableWithAggregatesFilter<"PriceSnapshot"> | $Enums.CurrencyCode | null
     capturedAt?: DateTimeWithAggregatesFilter<"PriceSnapshot"> | Date | string
   }
 
@@ -18032,11 +18124,15 @@ export namespace Prisma {
     id?: string
     symbol: string
     assetType: $Enums.AssetType
-    provider: $Enums.MarketDataProvider
+    provider?: $Enums.MarketDataProvider
     price: Decimal | DecimalJsLike | number | string
     change?: Decimal | DecimalJsLike | number | string | null
     changePercent?: Decimal | DecimalJsLike | number | string | null
-    currency: $Enums.CurrencyCode
+    high?: Decimal | DecimalJsLike | number | string | null
+    low?: Decimal | DecimalJsLike | number | string | null
+    open?: Decimal | DecimalJsLike | number | string | null
+    previousClose?: Decimal | DecimalJsLike | number | string | null
+    currency?: $Enums.CurrencyCode | null
     capturedAt?: Date | string
   }
 
@@ -18044,11 +18140,15 @@ export namespace Prisma {
     id?: string
     symbol: string
     assetType: $Enums.AssetType
-    provider: $Enums.MarketDataProvider
+    provider?: $Enums.MarketDataProvider
     price: Decimal | DecimalJsLike | number | string
     change?: Decimal | DecimalJsLike | number | string | null
     changePercent?: Decimal | DecimalJsLike | number | string | null
-    currency: $Enums.CurrencyCode
+    high?: Decimal | DecimalJsLike | number | string | null
+    low?: Decimal | DecimalJsLike | number | string | null
+    open?: Decimal | DecimalJsLike | number | string | null
+    previousClose?: Decimal | DecimalJsLike | number | string | null
+    currency?: $Enums.CurrencyCode | null
     capturedAt?: Date | string
   }
 
@@ -18060,7 +18160,11 @@ export namespace Prisma {
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     change?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     changePercent?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
+    high?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    low?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    open?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    previousClose?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableEnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode | null
     capturedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -18072,7 +18176,11 @@ export namespace Prisma {
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     change?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     changePercent?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
+    high?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    low?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    open?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    previousClose?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableEnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode | null
     capturedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -18080,11 +18188,15 @@ export namespace Prisma {
     id?: string
     symbol: string
     assetType: $Enums.AssetType
-    provider: $Enums.MarketDataProvider
+    provider?: $Enums.MarketDataProvider
     price: Decimal | DecimalJsLike | number | string
     change?: Decimal | DecimalJsLike | number | string | null
     changePercent?: Decimal | DecimalJsLike | number | string | null
-    currency: $Enums.CurrencyCode
+    high?: Decimal | DecimalJsLike | number | string | null
+    low?: Decimal | DecimalJsLike | number | string | null
+    open?: Decimal | DecimalJsLike | number | string | null
+    previousClose?: Decimal | DecimalJsLike | number | string | null
+    currency?: $Enums.CurrencyCode | null
     capturedAt?: Date | string
   }
 
@@ -18096,7 +18208,11 @@ export namespace Prisma {
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     change?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     changePercent?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
+    high?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    low?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    open?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    previousClose?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableEnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode | null
     capturedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -18108,7 +18224,11 @@ export namespace Prisma {
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     change?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     changePercent?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    currency?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
+    high?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    low?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    open?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    previousClose?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableEnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode | null
     capturedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19022,6 +19142,13 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type EnumCurrencyCodeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCurrencyCodeNullableFilter<$PrismaModel> | $Enums.CurrencyCode | null
+  }
+
   export type PriceSnapshotCountOrderByAggregateInput = {
     id?: SortOrder
     symbol?: SortOrder
@@ -19030,6 +19157,10 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrder
     changePercent?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    open?: SortOrder
+    previousClose?: SortOrder
     currency?: SortOrder
     capturedAt?: SortOrder
   }
@@ -19038,6 +19169,10 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrder
     changePercent?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    open?: SortOrder
+    previousClose?: SortOrder
   }
 
   export type PriceSnapshotMaxOrderByAggregateInput = {
@@ -19048,6 +19183,10 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrder
     changePercent?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    open?: SortOrder
+    previousClose?: SortOrder
     currency?: SortOrder
     capturedAt?: SortOrder
   }
@@ -19060,6 +19199,10 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrder
     changePercent?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    open?: SortOrder
+    previousClose?: SortOrder
     currency?: SortOrder
     capturedAt?: SortOrder
   }
@@ -19068,6 +19211,10 @@ export namespace Prisma {
     price?: SortOrder
     change?: SortOrder
     changePercent?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    open?: SortOrder
+    previousClose?: SortOrder
   }
 
   export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19084,6 +19231,16 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type EnumCurrencyCodeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCurrencyCodeNullableWithAggregatesFilter<$PrismaModel> | $Enums.CurrencyCode | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumCurrencyCodeNullableFilter<$PrismaModel>
+    _max?: NestedEnumCurrencyCodeNullableFilter<$PrismaModel>
   }
 
   export type EnumFxProviderFilter<$PrismaModel = never> = {
@@ -20022,6 +20179,10 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
+  export type NullableEnumCurrencyCodeFieldUpdateOperationsInput = {
+    set?: $Enums.CurrencyCode | null
+  }
+
   export type EnumFxProviderFieldUpdateOperationsInput = {
     set?: $Enums.FxProvider
   }
@@ -20378,6 +20539,13 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type NestedEnumCurrencyCodeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCurrencyCodeNullableFilter<$PrismaModel> | $Enums.CurrencyCode | null
+  }
+
   export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
@@ -20392,6 +20560,16 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCurrencyCodeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCurrencyCodeNullableWithAggregatesFilter<$PrismaModel> | $Enums.CurrencyCode | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumCurrencyCodeNullableFilter<$PrismaModel>
+    _max?: NestedEnumCurrencyCodeNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumFxProviderFilter<$PrismaModel = never> = {

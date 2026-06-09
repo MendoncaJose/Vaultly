@@ -228,6 +228,10 @@ exports.Prisma.PriceSnapshotScalarFieldEnum = {
   price: 'price',
   change: 'change',
   changePercent: 'changePercent',
+  high: 'high',
+  low: 'low',
+  open: 'open',
+  previousClose: 'previousClose',
   currency: 'currency',
   capturedAt: 'capturedAt'
 };
