@@ -11,6 +11,7 @@ import { holdingRouter } from './modules/holdings/holding.router'
 import { watchlistRouter } from './modules/watchlist/watchlist.router'
 import { alertRouter } from './modules/alerts/alert.router'
 import { notificationRouter } from './modules/notifications/notification.router'
+import { dashboardRouter } from './modules/dashboard/dashboard.router'
 
 export const app = express()
 
@@ -35,6 +36,7 @@ app.use('/holdings', holdingRouter)
 app.use('/watchlist', watchlistRouter)
 app.use('/alerts', alertRouter)
 app.use('/notifications', notificationRouter)
+app.use('/dashboard', dashboardRouter)
 
 app.use(notFoundHandler)
 app.use(errorHandler)
