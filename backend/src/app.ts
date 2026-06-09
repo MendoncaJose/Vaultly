@@ -8,6 +8,9 @@ import { authRouter } from './modules/auth/auth.router'
 import { marketDataRouter } from './modules/market-data/market-data.router'
 import { transactionRouter } from './modules/transactions/transaction.router'
 import { holdingRouter } from './modules/holdings/holding.router'
+import { watchlistRouter } from './modules/watchlist/watchlist.router'
+import { alertRouter } from './modules/alerts/alert.router'
+import { notificationRouter } from './modules/notifications/notification.router'
 
 export const app = express()
 
@@ -29,6 +32,9 @@ app.use('/auth', authRouter)
 app.use('/market-data', marketDataRouter)
 app.use('/transactions', transactionRouter)
 app.use('/holdings', holdingRouter)
+app.use('/watchlist', watchlistRouter)
+app.use('/alerts', alertRouter)
+app.use('/notifications', notificationRouter)
 
 app.use(notFoundHandler)
 app.use(errorHandler)
