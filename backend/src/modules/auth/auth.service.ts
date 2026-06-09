@@ -1,6 +1,11 @@
 import { prisma } from '../../lib/prisma'
 import { hashPassword, comparePassword } from '../../lib/password'
-import { signAccessToken, signRefreshToken, hashToken } from '../../lib/jwt'
+import {
+  signAccessToken,
+  signRefreshToken,
+  verifyRefreshToken,
+  hashToken,
+} from '../../lib/jwt'
 import { env } from '../../config/env'
 import type { RegisterInput, LoginInput } from './auth.schema'
 
@@ -86,4 +91,40 @@ export async function loginUser(input: LoginInput) {
   })
 
   return { user: toPublicUser(user), accessToken, refreshToken }
+}
+
+export async function refreshSession(token: string) {
+  const payload = verifyRefreshToken(token)
+  const tokenHash = hashToken(token)
+
+  const stored = await prisma.refreshToken.findUnique({ where: { tokenHash } })
+  if (!stored || stored.expiresAt < new Date()) {
+    throw Object.assign(new Error('Invalid or expired refresh token'), { status: 401 })
+  }
+
+  const user = await prisma.user.findUnique({ where: { id: payload.userId } })
+  if (!user) throw Object.assign(new Error('User not found'), { status: 401 })
+
+  await prisma.refreshToken.delete({ where: { tokenHash } })
+
+  const accessToken = signAccessToken({ userId: user.id, email: user.email })
+  const newRefreshToken = signRefreshToken({ userId: user.id })
+  const newTokenHash = hashToken(newRefreshToken)
+
+  await prisma.refreshToken.create({
+    data: { userId: user.id, tokenHash: newTokenHash, expiresAt: getRefreshTokenExpiryDate() },
+  })
+
+  return { user: toPublicUser(user), accessToken, refreshToken: newRefreshToken }
+}
+
+export async function logoutUser(token: string) {
+  const tokenHash = hashToken(token)
+  await prisma.refreshToken.deleteMany({ where: { tokenHash } })
+}
+
+export async function getMe(userId: string) {
+  const user = await prisma.user.findUnique({ where: { id: userId } })
+  if (!user) throw Object.assign(new Error('User not found'), { status: 404 })
+  return toPublicUser(user)
 }
