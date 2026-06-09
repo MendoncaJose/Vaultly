@@ -55,3 +55,44 @@ enum HoldingStatus {
   OPEN
   CLOSED
 }
+
+model User {
+  id                String        @id @default(cuid())
+  email             String        @unique
+  passwordHash      String
+  name              String?
+  role              UserRole      @default(USER)
+  plan              UserPlan      @default(FREE)
+  preferredCurrency CurrencyCode  @default(EUR)
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  portfolio         Portfolio?
+  refreshTokens     RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model Portfolio {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  name      String   @default("My Portfolio")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("portfolios")
+}
