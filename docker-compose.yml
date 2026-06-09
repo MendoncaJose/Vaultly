@@ -1,1 +1,16 @@
-# Docker Compose — PostgreSQL only (Task 1.7 adds full config)
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vaultly-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vaultly
+      POSTGRES_PASSWORD: vaultly_password
+      POSTGRES_DB: vaultly
+    ports:
+      - "5432:5432"
+    volumes:
+      - vaultly_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  vaultly_postgres_data:
