@@ -69,6 +69,7 @@ model User {
 
   portfolio         Portfolio?
   refreshTokens     RefreshToken[]
+  transactions      Transaction[]
 
   @@map("users")
 }
@@ -92,7 +93,69 @@ model Portfolio {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  holdings     Holding[]
+  transactions Transaction[]
 
   @@map("portfolios")
+}
+
+model Asset {
+  id             String             @id @default(cuid())
+  symbol         String
+  name           String
+  type           AssetType
+  currency       CurrencyCode
+  exchange       String?
+  provider       MarketDataProvider
+  providerSymbol String
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  holdings     Holding[]
+  transactions Transaction[]
+
+  @@unique([symbol, type])
+  @@map("assets")
+}
+
+model Holding {
+  id              String        @id @default(cuid())
+  portfolioId     String
+  assetId         String
+  quantity        Decimal
+  averageBuyPrice Decimal
+  totalCost       Decimal
+  status          HoldingStatus @default(OPEN)
+  currency        CurrencyCode
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  asset     Asset     @relation(fields: [assetId], references: [id])
+
+  @@unique([portfolioId, assetId])
+  @@map("holdings")
+}
+
+model Transaction {
+  id           String          @id @default(cuid())
+  portfolioId  String
+  assetId      String
+  userId       String
+  type         TransactionType
+  quantity     Decimal
+  pricePerUnit Decimal
+  fee          Decimal         @default(0)
+  currency     CurrencyCode
+  grossAmount  Decimal
+  netAmount    Decimal
+  transactedAt DateTime
+  createdAt    DateTime        @default(now())
+
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  asset     Asset     @relation(fields: [assetId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+
+  @@map("transactions")
 }
