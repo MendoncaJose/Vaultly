@@ -6,6 +6,8 @@ import { env } from './config/env'
 import { errorHandler, notFoundHandler } from './middlewares/error.middleware'
 import { authRouter } from './modules/auth/auth.router'
 import { marketDataRouter } from './modules/market-data/market-data.router'
+import { transactionRouter } from './modules/transactions/transaction.router'
+import { holdingRouter } from './modules/holdings/holding.router'
 
 export const app = express()
 
@@ -25,6 +27,8 @@ app.get('/health', (_req, res) => {
 
 app.use('/auth', authRouter)
 app.use('/market-data', marketDataRouter)
+app.use('/transactions', transactionRouter)
+app.use('/holdings', holdingRouter)
 
 app.use(notFoundHandler)
 app.use(errorHandler)
