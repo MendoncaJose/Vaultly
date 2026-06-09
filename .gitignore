@@ -35,9 +35,6 @@ Thumbs.db
 # TypeScript
 *.tsbuildinfo
 
-# Prisma
-prisma/migrations/
-
 # Docker volumes (local data)
 postgres_data/
 
