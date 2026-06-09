@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import rateLimit from 'express-rate-limit'
-import { register, login, refresh, logout, me } from './auth.controller'
+import { register, login, refresh, logout, me, patchMe } from './auth.controller'
 import { authMiddleware } from '../../middlewares/auth.middleware'
 
 const loginLimiter = rateLimit({
@@ -18,5 +18,6 @@ router.post('/login', loginLimiter, login)
 router.post('/refresh', refresh)
 router.post('/logout', logout)
 router.get('/me', authMiddleware, me)
+router.patch('/me', authMiddleware, patchMe)
 
 export { router as authRouter }

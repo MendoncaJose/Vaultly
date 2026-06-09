@@ -1,6 +1,12 @@
 import type { Request, Response, NextFunction } from 'express'
+import { z } from 'zod'
 import { registerSchema, loginSchema } from './auth.schema'
-import { registerUser, loginUser, refreshSession, logoutUser, getMe } from './auth.service'
+import { registerUser, loginUser, refreshSession, logoutUser, getMe, updateMe } from './auth.service'
+import { CurrencyCode } from '../../generated/prisma'
+
+const updateMeSchema = z.object({
+  preferredCurrency: z.nativeEnum(CurrencyCode).optional(),
+})
 import { env } from '../../config/env'
 
 const REFRESH_COOKIE = 'vaultly_rt'
@@ -75,6 +81,21 @@ export async function me(req: Request, res: Response, next: NextFunction) {
       return
     }
     const user = await getMe(userId)
+    res.status(200).json({ user })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function patchMe(req: Request, res: Response, next: NextFunction) {
+  try {
+    const userId = (req as Request & { userId?: string }).userId
+    if (!userId) {
+      res.status(401).json({ error: 'Unauthorized' })
+      return
+    }
+    const data = updateMeSchema.parse(req.body)
+    const user = await updateMe(userId, data)
     res.status(200).json({ user })
   } catch (err) {
     next(err)

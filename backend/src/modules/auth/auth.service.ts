@@ -128,3 +128,13 @@ export async function getMe(userId: string) {
   if (!user) throw Object.assign(new Error('User not found'), { status: 404 })
   return toPublicUser(user)
 }
+
+export async function updateMe(userId: string, data: { preferredCurrency?: string }) {
+  const user = await prisma.user.update({
+    where: { id: userId },
+    data: {
+      ...(data.preferredCurrency ? { preferredCurrency: data.preferredCurrency as import('../../generated/prisma').CurrencyCode } : {}),
+    },
+  })
+  return toPublicUser(user)
+}
