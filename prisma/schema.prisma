@@ -5,3 +5,53 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum UserPlan {
+  FREE
+  PREMIUM
+}
+
+enum AssetType {
+  STOCK
+  ETF
+  CRYPTO
+}
+
+enum TransactionType {
+  BUY
+  SELL
+}
+
+enum CurrencyCode {
+  EUR
+  USD
+}
+
+enum MarketDataProvider {
+  FINNHUB
+}
+
+enum FxProvider {
+  FRANKFURTER
+}
+
+enum AlertType {
+  PRICE_ABOVE
+  PRICE_BELOW
+  DAILY_CHANGE_PERCENT
+}
+
+enum NotificationType {
+  ALERT_TRIGGERED
+  SYSTEM
+}
+
+enum HoldingStatus {
+  OPEN
+  CLOSED
+}
