@@ -40,3 +40,11 @@ prisma/migrations/
 
 # Docker volumes (local data)
 postgres_data/
+
+# Claude / AI tooling
+CLAUDE.md
+CLAUDE_MASTER_PROMPT.md
+DESIGN.md
+TASKS.md
+README_CLAUDE_PACK.md
+Vaultly_End_to_End_Typing_Guide.md
