@@ -4,8 +4,14 @@
     "lib": ["ES2022"],
     "module": "CommonJS",
     "moduleResolution": "Node",
+    "rootDir": "..",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@vaultly/shared": ["../shared"],
+      "@vaultly/shared/*": ["../shared/*"]
+    },
+    "ignoreDeprecations": "6.0",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
