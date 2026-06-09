@@ -70,6 +70,9 @@ model User {
   portfolio         Portfolio?
   refreshTokens     RefreshToken[]
   transactions      Transaction[]
+  watchlistItems    WatchlistItem[]
+  alerts            Alert[]
+  notifications     Notification[]
 
   @@map("users")
 }
@@ -93,9 +96,10 @@ model Portfolio {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  holdings     Holding[]
-  transactions Transaction[]
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  holdings           Holding[]
+  transactions       Transaction[]
+  portfolioSnapshots PortfolioSnapshot[]
 
   @@map("portfolios")
 }
@@ -112,8 +116,10 @@ model Asset {
   createdAt      DateTime           @default(now())
   updatedAt      DateTime           @updatedAt
 
-  holdings     Holding[]
-  transactions Transaction[]
+  holdings       Holding[]
+  transactions   Transaction[]
+  watchlistItems WatchlistItem[]
+  alerts         Alert[]
 
   @@unique([symbol, type])
   @@map("assets")
@@ -158,4 +164,94 @@ model Transaction {
   user      User      @relation(fields: [userId], references: [id])
 
   @@map("transactions")
+}
+
+model WatchlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  assetId   String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  asset Asset @relation(fields: [assetId], references: [id])
+
+  @@unique([userId, assetId])
+  @@map("watchlist_items")
+}
+
+model Alert {
+  id           String    @id @default(cuid())
+  userId       String
+  assetId      String
+  type         AlertType
+  targetValue  Decimal
+  isActive     Boolean   @default(true)
+  triggeredAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  asset         Asset          @relation(fields: [assetId], references: [id])
+  notifications Notification[]
+
+  @@map("alerts")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  alertId   String?
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  alert Alert? @relation(fields: [alertId], references: [id], onDelete: SetNull)
+
+  @@map("notifications")
+}
+
+model PriceSnapshot {
+  id            String             @id @default(cuid())
+  symbol        String
+  assetType     AssetType
+  provider      MarketDataProvider
+  price         Decimal
+  change        Decimal?
+  changePercent Decimal?
+  currency      CurrencyCode
+  capturedAt    DateTime           @default(now())
+
+  @@index([symbol, assetType])
+  @@map("price_snapshots")
+}
+
+model FxRateSnapshot {
+  id           String       @id @default(cuid())
+  fromCurrency CurrencyCode
+  toCurrency   CurrencyCode
+  rate         Decimal
+  provider     FxProvider
+  capturedAt   DateTime     @default(now())
+
+  @@index([fromCurrency, toCurrency])
+  @@map("fx_rate_snapshots")
+}
+
+model PortfolioSnapshot {
+  id           String       @id @default(cuid())
+  portfolioId  String
+  totalValue   Decimal
+  totalCost    Decimal
+  totalPl      Decimal
+  currency     CurrencyCode
+  snapshotDate DateTime
+  createdAt    DateTime     @default(now())
+
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  @@unique([portfolioId, snapshotDate])
+  @@map("portfolio_snapshots")
 }
