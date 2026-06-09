@@ -1,7 +1,11 @@
+import { RouterProvider } from 'react-router-dom'
+import { AppProvider } from './app/provider'
+import { router } from './router'
+
 export default function App() {
   return (
-    <div>
-      <h1>Vaultly</h1>
-    </div>
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   )
 }
