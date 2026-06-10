@@ -8,7 +8,7 @@ import { useDashboardHoldingsMap } from '../../lib/queries/dashboard'
 
 export default function EtfsPage() {
   const [buyOpen, setBuyOpen] = useState(false)
-  const { data, isLoading } = useHoldings('ETF')
+  const { data, isLoading, isError } = useHoldings('ETF')
   const { map, currency } = useDashboardHoldingsMap()
 
   return (
@@ -23,6 +23,7 @@ export default function EtfsPage() {
       />
       <div className="flex-1 p-8">
         {isLoading && <p className="text-caption text-ash">Loading…</p>}
+        {isError && <p className="text-caption text-loss">Failed to load holdings.</p>}
         {data && (
           <HoldingsTable
             holdings={data.holdings}

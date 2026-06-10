@@ -106,7 +106,7 @@ function WatchlistRow({ item }: { item: WatchlistItem }) {
 
 export default function WatchlistPage() {
   const [addOpen, setAddOpen] = useState(false)
-  const { data, isLoading } = useWatchlist()
+  const { data, isLoading, isError } = useWatchlist()
 
   return (
     <div className="flex flex-col min-h-full">
@@ -116,6 +116,7 @@ export default function WatchlistPage() {
       />
       <div className="flex-1 p-8">
         {isLoading && <p className="text-caption text-ash">Loading…</p>}
+        {isError && <p className="text-caption text-loss">Failed to load watchlist.</p>}
         {data && data.items.length === 0 && (
           <Card className="flex items-center justify-center h-32">
             <p className="text-caption text-ash">Watchlist is empty. Add a symbol to track.</p>

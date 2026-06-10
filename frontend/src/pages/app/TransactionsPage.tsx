@@ -6,13 +6,14 @@ import { useTransactions } from '../../lib/queries/transactions'
 import { formatCurrency, formatDate } from '../../lib/format'
 
 export default function TransactionsPage() {
-  const { data, isLoading } = useTransactions()
+  const { data, isLoading, isError } = useTransactions()
 
   return (
     <div className="flex flex-col min-h-full">
       <Topbar title="Transactions" />
       <div className="flex-1 p-8">
         {isLoading && <p className="text-caption text-ash">Loading…</p>}
+        {isError && <p className="text-caption text-loss">Failed to load transactions.</p>}
 
         {data && data.transactions.length === 0 && (
           <Card className="flex items-center justify-center h-32">

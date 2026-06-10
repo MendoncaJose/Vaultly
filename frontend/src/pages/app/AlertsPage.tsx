@@ -116,7 +116,7 @@ function AlertRow({ alert }: { alert: Alert }) {
 
 export default function AlertsPage() {
   const [createOpen, setCreateOpen] = useState(false)
-  const { data: alertsData, isLoading: alertsLoading } = useAlerts()
+  const { data: alertsData, isLoading: alertsLoading, isError: alertsError } = useAlerts()
   const { data: notifData } = useNotifications()
   const { mutate: markRead } = useMarkNotificationRead()
 
@@ -148,6 +148,7 @@ export default function AlertsPage() {
 
         {/* Alerts list */}
         {alertsLoading && <p className="text-caption text-ash">Loading…</p>}
+        {alertsError && <p className="text-caption text-loss">Failed to load alerts.</p>}
         {alertsData && alertsData.alerts.length === 0 && (
           <Card className="flex items-center justify-center h-32">
             <p className="text-caption text-ash">No alerts. Create one to get notified.</p>

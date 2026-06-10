@@ -8,7 +8,7 @@ import { useDashboardHoldingsMap } from '../../lib/queries/dashboard'
 
 export default function CryptoPage() {
   const [buyOpen, setBuyOpen] = useState(false)
-  const { data, isLoading } = useHoldings('CRYPTO')
+  const { data, isLoading, isError } = useHoldings('CRYPTO')
   const { map, currency } = useDashboardHoldingsMap()
 
   return (
@@ -23,6 +23,7 @@ export default function CryptoPage() {
       />
       <div className="flex-1 p-8">
         {isLoading && <p className="text-caption text-ash">Loading…</p>}
+        {isError && <p className="text-caption text-loss">Failed to load holdings.</p>}
         {data && (
           <HoldingsTable
             holdings={data.holdings}
